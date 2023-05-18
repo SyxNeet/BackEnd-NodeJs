@@ -1,0 +1,6 @@
+// cấu hình compiler để cho thư viện hoạt động
+{
+    "presets": [
+        "@babel/preset-env"
+    ]
+}

@@ -1,0 +1,7 @@
+# quy định những gì được đẩy ra ngoài 
+
+/node_modules
+/vendor
+/.idea
+.idea/
+.env
