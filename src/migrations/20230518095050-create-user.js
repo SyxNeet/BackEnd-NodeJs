@@ -1,4 +1,5 @@
 'use strict';
+// file này giúp tự động map vào db
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -9,13 +10,29 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      email: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      }
+      ,
       firstName: {
         type: Sequelize.STRING
       },
       lastName: {
         type: Sequelize.STRING
       },
-      email: {
+      address: {
+        type: Sequelize.STRING
+      },
+      gender: {
+        type: Sequelize.BOOLEAN
+      },
+      typeRole: {
+        type: Sequelize.STRING
+      },
+      keyRole: {
         type: Sequelize.STRING
       },
       createdAt: {

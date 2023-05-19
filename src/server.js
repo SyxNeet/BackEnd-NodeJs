@@ -2,6 +2,9 @@ import express from 'express'
 import bodyParser from 'body-parser' // hỗ trợ lấy tham số (body,param)
 import viewEngine from "./config/viewEngine"
 import initWebRoutes from "./route/web"
+import connectDB from "./config/connectDB"
+
+
 require("dotenv").config() // dòng này giúp chạy được dòng 17(proscess.env)
 
 const app = express()
@@ -12,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 viewEngine(app)
 initWebRoutes(app)
+
+// connect DB
+connectDB()
 
 let port = process.env.PORT || 6969 // lấy tham số port trong .env
 app.listen(port, () => {
