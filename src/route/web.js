@@ -6,6 +6,9 @@ let router = express.Router()
 // truyền ứng dụng của server vào hàm này
 let initWebRoutes = (app) => {
     router.get('/', homeController.getHomePage) // gọi -> file homController và gọi đến hàm getHomePage
+    router.get('/crud', homeController.getCRUD) // gọi -> file homController và gọi đến hàm getHomePage
+    router.post('/post-crud', homeController.postCRUD) // gọi -> file homController và gọi đến hàm getHomePage
+
     return app.use(router) // tham số đầu tiên là api
 }
 
