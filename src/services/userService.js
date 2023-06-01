@@ -32,20 +32,16 @@ let handleUserLogin = (email, password) => {
 
             } else {
                 userData.errCode = 1
-                userData.errMessage = `Try again!`
+                userData.errMessage = `Email is not exist!`
 
             }
-
+            console.log("userData :", userData);
             resolve(userData)
         } catch (e) {
             reject(e)
         }
     })
 }
-
-
-
-
 
 let checkUserEmail = (userEmail) => {
     return new Promise(async (resolve, reject) => {
@@ -64,6 +60,34 @@ let checkUserEmail = (userEmail) => {
     })
 }
 
+let getAllUsers = (userId) => {
+    console.log("userId : ", userId);
+    return new Promise(async (resovle, reject) => {
+        try {
+            let users = ''
+            if (userId === "ALL") {
+                users = await db.User.findAll({
+                    attributes: {
+                        exclude: ['password']
+                    }
+                })
+            }
+
+            if (userId && userId !== "ALL") {
+                users = await db.User.findOne({
+                    where: { id: userId },
+                    attributes: {
+                        exclude: ['password']
+                    }
+                })
+            }
+            resovle(users)
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 module.exports = {
-    handleUserLogin: handleUserLogin
+    handleUserLogin: handleUserLogin,
+    getAllUsers: getAllUsers
 }

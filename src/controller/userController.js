@@ -13,7 +13,7 @@ const handleLogin = async (req, res) => {
 
     let userData = await userService.handleUserLogin(email, password)
 
-
+    // trả ra data dòng 38 login.js(react)
     return res.status(200).json({
         errcode: userData.errCode,
         message: userData.errMessage,
@@ -21,6 +21,25 @@ const handleLogin = async (req, res) => {
     })
 }
 
+const handleGetAllUsers = async (req, res) => {
+    let id = req.body.id //all, id
+    if (!id) {
+        return res.status(200).json({
+            errCode: 1,
+            errMessage: "Missing required params",
+            users: []
+        })
+    }
+    let users = await userService.getAllUsers(id)
+
+    return res.status(200).json({
+        errCode: 0,
+        errMessage: "oke",
+        users
+    })
+}
+
 module.exports = {
-    handleLogin: handleLogin
+    handleLogin: handleLogin,
+    handleGetAllUsers: handleGetAllUsers
 }

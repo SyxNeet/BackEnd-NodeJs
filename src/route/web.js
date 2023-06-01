@@ -17,6 +17,9 @@ let initWebRoutes = (app) => {
 
 
     router.post('/api/login', userController.handleLogin)
+    router.get('/api/get-all-user', userController.handleGetAllUsers)
+
+
 
     return app.use(router) // tham số đầu tiên là api
 }
